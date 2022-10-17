@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
+import { useState } from "react";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const [count, setCount] = useState(0);
   return (
     <div className={styles.container}>
       <Head>
@@ -13,10 +14,11 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-        <Link href="/teste">para teste</Link>
+        <h1 className={styles.title}>ALTERAÇÕES ADICIONADAS</h1>
+        <h1 className={styles.title}>Olha Aqui!!!!!</h1>
+        <h1>{count}</h1>
+        <button onClick={() => setCount(count + 1)}>adicionar</button>
+        <button onClick={() => setCount(count - 1)}>diminuir</button>
 
         <p className={styles.description}>
           Get started by editing{" "}

@@ -1,0 +1,34 @@
+name: Deploy to Homolog
+run-name: ${{ github.actor }} is deploying on Homolog
+on:
+  pull_request:
+    branches:
+      - "homolog"
+jobs:
+  UploadToAmazonS3:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_DEPLOY }}
+          aws-region: us-east-1
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Build production folder and export it
+        run: npm run build
+
+      # - name: Invalidate all files on Cloudfront cache
+      #   run: aws cloudfront create-invalidation --distribution-id=YOUR_DISTRIBUTION_ID --paths "/*"
+
+      - name: Copy files to the test website with the AWS CLI
+        run: |
+          cd out && aws s3 sync . s3://nextjswebpage --delete
