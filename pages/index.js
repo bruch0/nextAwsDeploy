@@ -17,8 +17,6 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
         <Link href="/teste">para teste</Link>
-        <h1 className={styles.title}>ALTERAÇÕES ADICIONADAS</h1>
-        <h1 className={styles.title}>Olha Aqui!!!!!</h1>
 
         <p className={styles.description}>
           Get started by editing{" "}
