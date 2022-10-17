@@ -5,7 +5,7 @@ on:
     branches:
       - "homolog"
 jobs:
-  Upload to Amazon S3:
+  UploadToAmazonS3:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
