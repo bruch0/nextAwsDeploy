@@ -26,8 +26,8 @@ jobs:
       - name: Build production folder and export it
         run: npm run build
 
-      - name: Log folder structure
-        run: ls
+      # - name: Invalidate all files on Cloudfront cache
+      #   run: aws cloudfront create-invalidation --distribution-id=YOUR_DISTRIBUTION_ID --paths "/*"
 
       - name: Copy files to the test website with the AWS CLI
         run: |
