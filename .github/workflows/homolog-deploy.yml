@@ -31,4 +31,4 @@ jobs:
 
       - name: Copy files to the test website with the AWS CLI
         run: |
-          cd out && aws s3 sync . s3://nextjswebpage
+          cd out && aws s3 sync . s3://nextjswebpage --delete
